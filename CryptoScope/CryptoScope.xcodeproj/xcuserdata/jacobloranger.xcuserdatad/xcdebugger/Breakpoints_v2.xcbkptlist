@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "63BC371B-086D-45F2-8D63-F1E441E56306"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8153D8BB-0115-4EC3-9500-4B8922AE4CCA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoScope/Supporting/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "8153D8BB-0115-4EC3-9500-4B8922AE4CCA - 45e88fcf5cf33c0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoScope.AppDelegate.__allocating_init() -&gt; CryptoScope.AppDelegate"
+                  moduleName = "CryptoScope"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jacobloranger/Documents/GitHub/CryptoScope/CryptoScope/CryptoScope/Supporting/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "7">
+               </Location>
+               <Location
+                  uuid = "8153D8BB-0115-4EC3-9500-4B8922AE4CCA - b636be7a77ac2fcd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoScope.AppDelegate.init() -&gt; CryptoScope.AppDelegate"
+                  moduleName = "CryptoScope"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jacobloranger/Documents/GitHub/CryptoScope/CryptoScope/CryptoScope/Supporting/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "8153D8BB-0115-4EC3-9500-4B8922AE4CCA - dd5a729a90cf1a36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoScope.AppDelegate.__deallocating_deinit"
+                  moduleName = "CryptoScope"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jacobloranger/Documents/GitHub/CryptoScope/CryptoScope/CryptoScope/Supporting/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "8153D8BB-0115-4EC3-9500-4B8922AE4CCA - b801be335195cdce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "CryptoScope"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jacobloranger/Documents/GitHub/CryptoScope/CryptoScope/CryptoScope/Supporting/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
