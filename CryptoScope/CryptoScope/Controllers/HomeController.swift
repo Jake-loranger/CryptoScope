@@ -9,15 +9,11 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    // MARK - Variables
-    private let coins: [Coin] = [
-        Coin(id: 1, name: "Bitcoin", maxSupply: 200, rank: 1, pricingData: PricingData(USD: USD(price: 50000, market_cap: 1_000_000))),
-        Coin(id: 2, name: "Ethereum", maxSupply: nil, rank: 2, pricingData: PricingData(USD: USD(price: 5000, market_cap: 500_000))),
-        Coin(id: 3, name: "Monero", maxSupply: nil, rank: 3, pricingData: PricingData(USD: USD(price: 10, market_cap: 250_000)))
-    ]
+    // MARK: - Variables
+    private let viewModel: HomeControllerViewModel
     
     
-    // MARK - UI Components
+    // MARK: - UI Components
     private let tableView: UITableView = {
         let tv = UITableView()
         tv.backgroundColor = .systemBackground
@@ -26,19 +22,55 @@ class HomeController: UIViewController {
     }()
     
     
-    // MARK - LifeCycle
+    // MARK: - LifeCycle
+    init(_ viewModel: HomeControllerViewModel = HomeControllerViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpUI()
+        self.setupUI()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.viewModel.onCoinsUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        
+        self.viewModel.onErrorMessage = { [weak self] error in
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                
+                switch error {
+                case .serverError(let serverError):
+                    alert.title = "Server Error \(serverError.errorCode)"
+                    alert.message = serverError.errorMessage
+                case .unknown(let string):
+                    alert.title = "Error Fetching Coins"
+                    alert.message = string
+                case .decodingError(let string):
+                    alert.title = "Error Parsing Data"
+                    alert.message = string
+                }
+                
+                self?.present(alert, animated: true, completion: nil)
+            }
+        }
     }
+
     
-    
-    // MARK - UI Setup
-    private func setUpUI() {
-        self.navigationItem.title = "CryptoScope"
+    // MARK: - UI Setup
+    private func setupUI() {
+        self.navigationItem.title = "iCryyptPro"
         self.view.backgroundColor = .systemBackground
         
         self.view.addSubview(tableView)
@@ -48,18 +80,20 @@ class HomeController: UIViewController {
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
     }
     
-    // MARK - Selectors
-
+    
+    // MARK: - Selectors
+    
 }
 
-// MARK - TableView Functions
+// MARK: - TableView Functions
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.coins.count
+        return self.viewModel.coins.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,7 +101,7 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Unable to dequeue CoinCell in HomeController")
         }
         
-        let coin = self.coins[indexPath.row]
+        let coin = self.viewModel.coins[indexPath.row]
         cell.configure(with: coin)
         return cell
     }
@@ -78,12 +112,13 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        let coin = self.coins[indexPath.row]
-        let vm = ViewCyrptoControllerViewModel(coin)
+        
+        let coin = self.viewModel.coins[indexPath.row]
+        let vm = ViewCryptoControllerViewModel(coin)
         let vc = ViewCryptoController(vm)
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        
     }
     
-    
 }
-

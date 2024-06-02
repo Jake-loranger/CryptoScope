@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-class ViewCyrptoControllerViewModel {
+class ViewCryptoControllerViewModel {
     
     // MARK - Variables
     var onImageLoaded: ((UIImage?) ->Void)?
     let coin: Coin
     
-    // MARK - Initilizer
+    // MARK - Initializer
     init(_ coin: Coin) {
         self.coin = coin
         self.loadImage()

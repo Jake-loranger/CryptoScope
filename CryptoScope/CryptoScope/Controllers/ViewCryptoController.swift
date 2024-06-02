@@ -11,7 +11,7 @@ class ViewCryptoController: UIViewController {
 
     
     // MARK - Variables
-    let viewModel: ViewCyrptoControllerViewModel
+    let viewModel: ViewCryptoControllerViewModel
     
     // MARK - UI Components
     private let scrollView: UIScrollView = {
@@ -80,7 +80,7 @@ class ViewCryptoController: UIViewController {
     }()
     
     // MARK - Lifecycle
-    init(_ viewModel: ViewCyrptoControllerViewModel) {
+    init(_ viewModel: ViewCryptoControllerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

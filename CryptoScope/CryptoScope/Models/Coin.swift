@@ -11,7 +11,7 @@ struct CoinArray: Decodable {
     let data: [Coin]
 }
 
-struct Coin: Decodable {
+struct Coin: Codable {
     let id: Int
     let name: String
     let maxSupply: Int?
@@ -19,7 +19,7 @@ struct Coin: Decodable {
     let pricingData: PricingData
     
     var logoURL: URL? {
-        return URL(string: "https://s2.coinmarketcap.com/static/img/coins/200x200/1.png")
+        return URL(string: "https://s2.coinmarketcap.com/static/img/coins/200x200/\(id).png")
     }
     
     enum CodingKeys: String, CodingKey {
@@ -31,11 +31,11 @@ struct Coin: Decodable {
     }
 }
 
-struct PricingData: Decodable {
+struct PricingData: Codable {
     let USD: USD
 }
 
-struct USD: Decodable {
+struct USD: Codable {
     let price: Double
     let market_cap: Double
 }
